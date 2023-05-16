@@ -48,14 +48,14 @@ public class TileManager {
 			m_tile[2] = new Tile();
 			m_tile[2].m_image = ImageIO.read(getClass().getResource("/tiles/WALL_backWithTorch.png"));
 			
-			m_tile[3] = new Tile();
-			m_tile[3].m_image = ImageIO.read(getClass().getResource("/tiles/LAVA.png"));
+			//m_tile[3] = new Tile();
+			//m_tile[3].m_image = ImageIO.read(getClass().getResource("/tiles/LAVA.png"));
 			
-			m_tile[4] = new Tile();
-			m_tile[4].m_image = ImageIO.read(getClass().getResource("/tiles/SAND.png"));
+			//m_tile[4] = new Tile();
+			//m_tile[4].m_image = ImageIO.read(getClass().getResource("/tiles/SAND.png"));
 			
-			m_tile[5] = new Tile();
-			m_tile[5].m_image = ImageIO.read(getClass().getResource("/tiles/SNOW.png"));
+			//m_tile[5] = new Tile();
+			//m_tile[5].m_image = ImageIO.read(getClass().getResource("/tiles/SNOW.png"));
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -78,13 +78,13 @@ public class TileManager {
 			// Parcourir le fichier txt pour r�cup�rer les valeurs
 			while (col < m_gp.maxWorldCol && row < m_gp.maxWorldRow) {
 				String line = br.readLine();
-				while (col < m_gp.MAX_SCREEN_COL) {
+				while (col < m_gp.maxWorldCol) {
 					String numbers[] = line.split(" ");
 					int num = Integer.parseInt(numbers[col]);
 					m_mapTileNum [col][row] = num;
 					col++;
 				}
-				if (col == m_gp.MAX_SCREEN_COL) {
+				if (col == m_gp.maxWorldCol) {
 					col = 0;
 					row ++;
 				}
@@ -107,12 +107,10 @@ public class TileManager {
 		
 		while (worldCol < m_gp.maxWorldCol && worldRow < m_gp.maxWorldRow) {
 			int tileNum = m_mapTileNum[worldCol][worldRow];
-			
 			int worldX = worldCol * m_gp.TILE_SIZE ;
 			int worldY = worldRow * m_gp.TILE_SIZE ;
 			int screenX = worldX - m_gp.m_player.worldX + m_gp.m_player.screenX ;
 			int screenY = worldY - m_gp.m_player.worldY + m_gp.m_player.screenY ;
-			
 			g2.drawImage(m_tile[tileNum].m_image, screenX, screenY, m_gp.TILE_SIZE, m_gp.TILE_SIZE, null);
 			worldCol ++;
 			

@@ -31,16 +31,16 @@ public class Player extends Entity{
 		this.m_keyH = a_keyH;
 		this.setDefaultValues();
 		this.getPlayerImage();
-		screenX = m_gp.SCREEN_WIDTH/2 -m_gp.TILE_SIZE/2;
-		screenY = m_gp.SCREEN_HEIGHT/2 -m_gp.TILE_SIZE/2;
+		screenX = m_gp.SCREEN_WIDTH/2 - (m_gp.TILE_SIZE/2);
+		screenY = m_gp.SCREEN_HEIGHT/2 - (m_gp.TILE_SIZE/2);
 	}
 	
 	/**
 	 * Initialisation des donn�es membres avec des valeurs par d�faut
 	 */
 	protected void setDefaultValues() {
-		worldX = 100;
-		worldY = 100;
+		worldX = 200;
+		worldY = 200;
 		m_speed = 4;
 		direction = "down";
 	}
