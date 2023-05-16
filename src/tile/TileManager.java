@@ -41,12 +41,15 @@ public class TileManager {
 		try {
 			m_tile[0] = new Tile();
 			m_tile[0].m_image = ImageIO.read(getClass().getResource("/tiles/BRICK_2.png"));
+			m_tile[0].m_collision = true;
 			
 			m_tile[1] = new Tile();
 			m_tile[1].m_image = ImageIO.read(getClass().getResource("/tiles/BRICK2.png"));
+			m_tile[1].m_collision = true;
 			
 			m_tile[2] = new Tile();
 			m_tile[2].m_image = ImageIO.read(getClass().getResource("/tiles/WALL_backWithTorch.png"));
+			m_tile[2].m_collision = true;
 			
 			//m_tile[3] = new Tile();
 			//m_tile[3].m_image = ImageIO.read(getClass().getResource("/tiles/LAVA.png"));

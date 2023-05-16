@@ -2,6 +2,7 @@ package entity;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -33,6 +34,12 @@ public class Player extends Entity{
 		this.getPlayerImage();
 		screenX = m_gp.SCREEN_WIDTH/2 - (m_gp.TILE_SIZE/2);
 		screenY = m_gp.SCREEN_HEIGHT/2 - (m_gp.TILE_SIZE/2);
+		solideArea = new Rectangle();
+		solideArea.x=8;
+		solideArea.y=16;
+		solideArea.width=32;
+		solideArea.height=32;
+		
 	}
 	
 	/**
