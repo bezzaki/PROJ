@@ -76,7 +76,7 @@ public class TileManager {
 			int row = 0;
 			
 			// Parcourir le fichier txt pour r�cup�rer les valeurs
-			while (col < m_gp.MAX_SCREEN_COL && row < m_gp.MAX_SCREE_ROW) {
+			while (col < m_gp.maxWorldCol && row < m_gp.maxWorldRow) {
 				String line = br.readLine();
 				while (col < m_gp.MAX_SCREEN_COL) {
 					String numbers[] = line.split(" ");
@@ -101,22 +101,24 @@ public class TileManager {
 	 * @param g2
 	 */
 	public void draw(Graphics2D g2) {
-		int col = 0;
-		int row = 0;
-		int x = 0;
-		int y = 0;
+		int worldCol = 0;
+		int worldRow = 0;
+
 		
-		while (col < m_gp.MAX_SCREEN_COL && row < m_gp.MAX_SCREE_ROW) {
-			int tileNum = m_mapTileNum[col][row];
+		while (worldCol < m_gp.maxWorldCol && worldRow < m_gp.maxWorldRow) {
+			int tileNum = m_mapTileNum[worldCol][worldRow];
 			
-			g2.drawImage(m_tile[tileNum].m_image, x, y, m_gp.TILE_SIZE, m_gp.TILE_SIZE, null);
-			col ++;
-			x += m_gp.TILE_SIZE;
-			if (col == m_gp.MAX_SCREEN_COL) {
-				col = 0;
-				row ++;
-				x = 0;
-				y += m_gp.TILE_SIZE;
+			int worldX = worldCol * m_gp.TILE_SIZE ;
+			int worldY = worldRow * m_gp.TILE_SIZE ;
+			int screenX = worldX - m_gp.m_player.worldX + m_gp.m_player.screenX ;
+			int screenY = worldY - m_gp.m_player.worldY + m_gp.m_player.screenY ;
+			
+			g2.drawImage(m_tile[tileNum].m_image, screenX, screenY, m_gp.TILE_SIZE, m_gp.TILE_SIZE, null);
+			worldCol ++;
+			
+			if (worldCol == m_gp.maxWorldCol) {
+				worldCol = 0;
+				worldRow ++;
 			}
 		}
 		

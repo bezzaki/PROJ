@@ -37,7 +37,7 @@ public class GamePanel extends JPanel implements Runnable{
 	// Cr�ation des diff�rentes instances (Player, KeyHandler, TileManager, GameThread ...)
 	KeyHandler m_keyH;
 	Thread m_gameThread;
-	Player m_player;
+	public Player m_player;
 	TileManager m_tileM;
 		
 	/**
