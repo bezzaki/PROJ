@@ -29,7 +29,7 @@ public class TileManager {
 	public TileManager(GamePanel gp) {
 		this.m_gp =  gp;
 		m_tile = new Tile[m_maxTiles];
-		m_mapTileNum = new int[gp.MAX_SCREEN_COL][gp.MAX_SCREE_ROW];
+		m_mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 		this.getTileImage();
 		this.loadMap("/maps/map.txt");
 	}

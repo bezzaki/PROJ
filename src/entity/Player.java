@@ -11,13 +11,15 @@ import main.GamePanel;
 import main.KeyHandler;
 
 /**
- * D�fintition du comportement d'un joueur
+ * Defintition du comportement d'un joueur
  *
  */
 public class Player extends Entity{
 
 	GamePanel m_gp;
 	KeyHandler m_keyH;
+	public final int screenX;
+	public final int screenY;
 	
 	/**
 	 * Constructeur de Player
@@ -29,14 +31,16 @@ public class Player extends Entity{
 		this.m_keyH = a_keyH;
 		this.setDefaultValues();
 		this.getPlayerImage();
+		screenX = m_gp.SCREEN_WIDTH/2 -m_gp.TILE_SIZE/2;
+		screenY = m_gp.SCREEN_HEIGHT/2 -m_gp.TILE_SIZE/2;
 	}
 	
 	/**
 	 * Initialisation des donn�es membres avec des valeurs par d�faut
 	 */
 	protected void setDefaultValues() {
-		m_x = 100;
-		m_y = 100;
+		worldX = 100;
+		worldY = 100;
 		m_speed = 4;
 		direction = "down";
 	}
@@ -61,21 +65,21 @@ public class Player extends Entity{
 	 */
 	public void update() {
 		
-			if(m_keyH.upPressed == true && m_y < m_gp.SCREEN_HEIGHT - 2* m_gp.TILE_SIZE && m_y >= 2* m_gp.TILE_SIZE) {
+			if(m_keyH.upPressed == true ) {
 				direction = "up";
-				m_y -= m_speed;
+				worldY-= m_speed;
 			}
-			if(m_keyH.downPressed == true && m_y < m_gp.SCREEN_HEIGHT - 2* m_gp.TILE_SIZE && m_y >= 2* m_gp.TILE_SIZE) {
+			if(m_keyH.downPressed == true ) {
 				direction = "down";
-				m_y += m_speed;
+				worldY += m_speed;
 			}
-			if(m_keyH.leftPressed == true && m_x < m_gp.SCREEN_WIDTH - 2* m_gp.TILE_SIZE && m_x >= 2* m_gp.TILE_SIZE ) {
+			if(m_keyH.leftPressed == true ) {
 				direction = "left";
-				m_x -= m_speed;
+				worldX -= m_speed;
 			}
-			if(m_keyH.rightPressed == true && m_x < m_gp.SCREEN_WIDTH - 2* m_gp.TILE_SIZE && m_x >= 2* m_gp.TILE_SIZE ) {
+			if(m_keyH.rightPressed == true) {
 				direction = "right";
-				m_x += m_speed;
+				worldX += m_speed;
 			}
 		
 		
@@ -102,7 +106,7 @@ public class Player extends Entity{
 			l_image = right;
 			break;
 		}
-		a_g2.drawImage(l_image, m_x, m_y, m_gp.TILE_SIZE, m_gp.TILE_SIZE, null);
+		a_g2.drawImage(l_image, screenX, screenY, m_gp.TILE_SIZE, m_gp.TILE_SIZE, null);
 		
 		// affiche le personnage avec l'image "image", avec les coordonn�es x et y, et de taille tileSize (16x16) sans �chelle, et 48x48 avec �chelle)
 		

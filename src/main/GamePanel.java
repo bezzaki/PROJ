@@ -28,6 +28,12 @@ public class GamePanel extends JPanel implements Runnable{
 	// FPS : taux de rafraichissement
 	int m_FPS;
 	
+	// world map settings
+	public final int maxWorldCol = 32;
+	public final int maxWorldRow = 24;
+	public final int worldWdth = TILE_SIZE * maxWorldCol;
+	public final int worldHeight = TILE_SIZE * maxWorldRow;
+	
 	// Cr�ation des diff�rentes instances (Player, KeyHandler, TileManager, GameThread ...)
 	KeyHandler m_keyH;
 	Thread m_gameThread;
